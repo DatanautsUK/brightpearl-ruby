@@ -28,6 +28,14 @@ module Brightpearl
       instance_id ||= :default
       self.configuration[instance_id] ||= Configuration.instance(instance_id)
       yield(configuration[instance_id])
+      configuration[instance_id]
+    end
+
+    # This method really only exists for isolation in tests...
+    def reset!
+      self.configuration = {}
+      Brightpearl::Service.reset!
+      Brightpearl::Configuration.reset!
     end
 
   end

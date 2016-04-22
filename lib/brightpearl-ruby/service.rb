@@ -7,10 +7,11 @@ module Brightpearl
     attr_accessor :configuration
 
     def initialize(instance_id)
+      # puts "** new service object #{instance_id}"
       @configuration = Brightpearl::Configuration.instance(instance_id)
       raise BrightpearlException unless @configuration.valid?
     end
-    
+
     def uri(path)
       configuration.uri(path)
     end
@@ -24,6 +25,10 @@ module Brightpearl
 
         @@instances[instance_id] ||= new(instance_id)
 
+      end
+
+      def reset!
+        @@instances = {}
       end
 
     end
