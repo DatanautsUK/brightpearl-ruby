@@ -5,9 +5,10 @@ module Brightpearl
     attr_accessor :datacenter, :account, :app_ref, :account_token
 
     @@instances = {}
-    
+
     def initialize(instance_id)
-      # if no instance_id is supplied (single Brightpearl application) then 
+
+      # if no instance_id is supplied (single Brightpearl application) then
       # .... we can just use the environment variables to configure it...
       if instance_id == :default
         self.datacenter = ENV['BRIGHTPEARL_DATACENTER']
@@ -37,7 +38,12 @@ module Brightpearl
       def instance(instance_id = :default)
 
         @@instances[instance_id] ||= new(instance_id)
+        raise ::Brightpearl::BrightpearlException if instance_id == :default && @@instances.keys.length != 1
 
+      end
+
+      def reset!
+        @@instances = {}
       end
 
     end
