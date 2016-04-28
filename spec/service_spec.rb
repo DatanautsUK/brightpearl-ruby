@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Brightpearl::Service do
-
   after(:each) do
     Brightpearl.reset!
   end
@@ -11,56 +10,53 @@ describe Brightpearl::Service do
   end
 
   context 'when using instance method' do
-
     it 'will raise an error without a valid config' do
-      expect{ Brightpearl::Service.instance }.to raise_error(Brightpearl::BrightpearlException)
+      expect { Brightpearl::Service.instance }.to \
+        raise_error(Brightpearl::BrightpearlException)
     end
-
   end
 
   context 'with a valid config' do
+    let(:service) { Brightpearl::Service.instance }
 
     before(:each) do
       Brightpearl.configure(:default) do |config|
         config.datacenter = 'datacenter'
-        config.account = "account"
-        config.app_ref = "app_ref"
-        config.account_token = "account_token"
+        config.account = 'account'
+        config.app_ref = 'app_ref'
+        config.account_token = 'account_token'
       end
     end
 
     it 'will have a configuration' do
-      expect(Brightpearl::Service.instance.configuration).to be_a Brightpearl::Configuration
+      expect(service.configuration).to be_a Brightpearl::Configuration
     end
 
     it 'will generate the correct uri endpoint' do
-      expect(Brightpearl::Service.instance.uri('/test')).to eq "https://datacenter.brightpearl.com/public-api/account/test"
+      expect(service.uri('/test')).to eq 'https://datacenter.brightpearl.com/public-api/account/test'
     end
-
   end
 
   context 'when configured for multiple sites' do
-
     before(:each) do
       Brightpearl.configure('uk') do |config|
-       config.datacenter = 'ws-eu1'
-       config.account = 'myuksite'
-       config.app_ref = 'app_ref-uk'
-       config.account_token = 'account_token-uk'
+        config.datacenter = 'ws-eu1'
+        config.account = 'myuksite'
+        config.app_ref = 'app_ref-uk'
+        config.account_token = 'account_token-uk'
       end
 
       Brightpearl.configure('eu') do |config|
-       config.datacenter = 'ws-eu'
-       config.account = 'myeurosite'
-       config.app_ref = 'app_ref-eu'
-       config.account_token = 'account_token-eu'
+        config.datacenter = 'ws-eu'
+        config.account = 'myeurosite'
+        config.app_ref = 'app_ref-eu'
+        config.account_token = 'account_token-eu'
       end
     end
 
     it 'will not allow use of the :default configuration' do
-      expect { Brightpearl::Service.instance }.to raise_error Brightpearl::BrightpearlException
+      expect { Brightpearl::Service.instance }.to \
+        raise_error Brightpearl::BrightpearlException
     end
-
   end
-
 end

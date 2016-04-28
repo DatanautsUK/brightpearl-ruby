@@ -8,13 +8,13 @@ require 'brightpearl_ruby/service'
 unless Object.respond_to?(:blank?)
   Object.class_eval do
     def blank?
-      respond_to?(:empty?) ? !!empty? : !self
+      respond_to?(:empty?) ? empty? : !self
     end
   end
 end
 
+# Main Brightpearl module (other classes will reside in here...)
 module Brightpearl
-
   class AuthException < StandardError; end
   class BrightpearlException < StandardError; end
   class ThrottleException < StandardError; end
@@ -23,10 +23,9 @@ module Brightpearl
   class << self
     attr_accessor :configuration
 
-
     def configure(instance_id = nil)
       instance_id ||= :default
-      self.configuration[instance_id] ||= Configuration.instance(instance_id)
+      configuration[instance_id] ||= Configuration.instance(instance_id)
       yield(configuration[instance_id])
       configuration[instance_id]
     end
@@ -37,9 +36,7 @@ module Brightpearl
       Brightpearl::Service.reset!
       Brightpearl::Configuration.reset!
     end
-
   end
 
   self.configuration = {}
-
 end
