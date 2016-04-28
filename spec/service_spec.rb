@@ -38,6 +38,8 @@ describe Brightpearl::Service do
   end
 
   context 'when configured for multiple sites' do
+    let(:uk) { Brightpearl::Service.instance('uk') }
+    let(:eu) { Brightpearl::Service.instance('eu') }
     before(:each) do
       Brightpearl.configure('uk') do |config|
         config.datacenter = 'ws-eu1'
@@ -57,6 +59,14 @@ describe Brightpearl::Service do
     it 'will not allow use of the :default configuration' do
       expect { Brightpearl::Service.instance }.to \
         raise_error Brightpearl::BrightpearlException
+    end
+
+    it 'will generate the correct uri endpoint for each site' do
+      expect(uk.uri('/test')).to \
+        eq('https://ws-eu1.brightpearl.com/public-api/myuksite/test')
+
+      expect(eu.uri('/test')).to \
+        eq('https://ws-eu.brightpearl.com/public-api/myeurosite/test')
     end
   end
 end
