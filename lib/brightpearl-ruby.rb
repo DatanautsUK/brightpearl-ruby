@@ -1,6 +1,6 @@
-require 'brightpearl_ruby/version'
-require 'brightpearl_ruby/configuration'
-require 'brightpearl_ruby/service'
+require 'brightpearl-ruby/version'
+require 'brightpearl-ruby/configuration'
+require 'brightpearl-ruby/service'
 
 # defining blank here instead of using the whole of ActiveSupport...
 # other suggestions welcome ;)
