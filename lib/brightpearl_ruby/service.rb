@@ -1,8 +1,7 @@
 module Brightpearl
-
+  # Brightpearl::Service
   class Service
-
-    @@instances = {}
+    @instances = {}
 
     attr_accessor :configuration
 
@@ -17,23 +16,17 @@ module Brightpearl
     end
 
     class << self
-
       private :new
 
-      # this is "like" the singleton pattern, but we allow multiple instances referenced by "instance_id"
+      # this is "like" the singleton pattern, but we allow multiple instances
+      # referenced by "instance_id"
       def instance(instance_id = :default)
-
-        @@instances[instance_id] ||= new(instance_id)
-
+        @instances[instance_id] ||= new(instance_id)
       end
 
       def reset!
-        @@instances = {}
+        @instances = {}
       end
-
     end
-
-
   end
-
 end
