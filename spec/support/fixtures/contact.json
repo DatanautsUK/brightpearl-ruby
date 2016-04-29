@@ -1,0 +1,109 @@
+{
+  "response": [
+    {
+      "contactId": 200,
+      "isPrimaryContact": true,
+      "salutation": "Mr.",
+      "firstName": "Testy",
+      "lastName": "McTester",
+      "postAddressIds": {
+        "DEF": 107,
+        "BIL": 107,
+        "DEL": 113
+      },
+      "communication": {
+        "emails": {
+          "PRI": {
+            "email": "tom@brightpearl.com"
+          },
+          "SEC": {
+            "email": "roger.doger@test.com"
+          },
+          "TER": {
+            "email": "dog@test.com"
+          }
+        },
+        "telephones": {
+          "PRI": "+44 45895485",
+          "SEC": "014568595487",
+          "MOB": "07555555445"
+        },
+        "messagingVoips": {
+          "SKP": "roger.doger1212"
+        },
+        "websites": {
+          "PRI": "test.com"
+        }
+      },
+      "contactStatus": {
+        "current": {
+          "contactStatusName": "Prospecting",
+          "contactStatusId": 3
+        },
+        "history": [
+          {
+            "contactStatusName": "Suspect",
+            "contactStatusId": 2,
+            "occuredOn": "2011-07-29T10:46:10.000+01:00",
+            "staffContactId": 201
+          },
+          {
+            "contactStatusName": "Prospecting",
+            "contactStatusId": 3,
+            "occuredOn": "2011-07-29T11:06:29.000+01:00",
+            "staffContactId": 201
+          }
+        ]
+      },
+      "relationshipToAccount": {
+        "isSupplier": false,
+        "isStaff": false
+      },
+      "marketingDetails": {
+        "isReceiveEmailNewsletter": true
+      },
+      "financialDetails": {
+        "priceListId": 2,
+        "nominalCode": "4000",
+        "taxCodeId": "8",
+        "creditLimit": "1000.0000",
+        "creditTermDays": 30,
+        "currencyId": 1,
+        "discountPercentage": 12.90,
+        "taxNumber": "k763iudyh236r9fdi"
+      },
+      "assignment": {
+        "current": {
+          "staffOwnerContactid": 201,
+          "departmentId": 1,
+          "leadSourceId": 3,
+          "accountReference": "#2321A"
+        }
+      },
+      "organisation": {
+        "organisationId": 200,
+        "name": "Rogers Organisation"
+      },
+      "tradeStatus": "UNKNOWN",
+      "createdByid": 2,
+      "createdOn": "2011-07-14T17:20:10.000+01:00",
+      "updatedOn": "2011-07-29T11:06:29.000+01:00",
+      "contactTags": "12,14,15",
+      "aliases": {
+        "eBay": "ebay_272_"
+      }
+    }
+  ],
+  "pagination": {
+    "morePagesAvailable": false,
+    "resultsReturned": 1,
+    "firstResult": 1,
+    "lastResult": 1
+  },
+  "sorting": [
+    {
+      "field": "contactId",
+      "direction": "ASC"
+    }
+  ]
+}
